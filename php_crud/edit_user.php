@@ -110,19 +110,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 <?php include 'navbar.php'; ?>
 
 <div class="main-content">
     <div class="page-header">
-        <h1>✏️ Edit User</h1>
+        <h1><i class="fas fa-edit"></i> Edit User</h1>
         <a href="view_users.php" class="btn btn-secondary btn-sm">← Back to Users</a>
     </div>
 
     <?php if ($errors): ?>
         <div class="alert alert-danger">
-            ⚠️ Please fix the following:<br>
+            <i class="fas fa-exclamation-triangle"></i> Please fix the following:<br>
             <ul style="margin:8px 0 0 18px;">
                 <?php foreach ($errors as $e): ?>
                     <li><?= htmlspecialchars($e) ?></li>
@@ -190,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div style="display:flex;gap:10px;margin-top:8px;">
-                <button type="submit" class="btn btn-warning">💾 Update User</button>
+                <button type="submit" class="btn btn-warning"><i class="fas fa-save"></i> Update User</button>
                 <a href="view_users.php" class="btn btn-secondary">Cancel</a>
             </div>
         </form>

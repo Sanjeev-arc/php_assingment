@@ -45,16 +45,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 <div class="login-wrapper">
     <div class="login-box">
-        <div class="logo-icon">🛡️</div>
+        <div class="logo-icon"></div>
         <h2>Admin Portal</h2>
         <p class="subtitle">Sign in to manage users</p>
 
         <?php if ($error): ?>
-            <div class="alert alert-danger">⚠️ <?= htmlspecialchars($error) ?></div>
+            <div class="alert alert-danger"><i class="fas fa-exclamation-triangle"></i> <?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
 
         <form method="POST" action="login.php">
@@ -71,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     placeholder="Enter your password" required>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-full">🔐 Login</button>
+            <button type="submit" class="btn btn-primary btn-full"> Login</button>
         </form>
 
     </div>

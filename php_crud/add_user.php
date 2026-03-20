@@ -75,23 +75,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add User</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 <?php include 'navbar.php'; ?>
 
 <div class="main-content">
     <div class="page-header">
-        <h1>➕ Add New User</h1>
+        <h1><i class="fas fa-plus"></i> Add New User</h1>
         <a href="view_users.php" class="btn btn-secondary btn-sm">← Back to Users</a>
     </div>
 
     <?php if ($success): ?>
-        <div class="alert alert-success">✅ <?= $success ?> <a href="view_users.php">View all users →</a></div>
+        <div class="alert alert-success"><i class="fas fa-check-circle"></i> <?= $success ?> <a href="view_users.php">View all users →</a></div>
     <?php endif; ?>
 
     <?php if ($errors): ?>
         <div class="alert alert-danger">
-            ⚠️ Please fix the following:<br>
+            <i class="fas fa-exclamation-triangle"></i> Please fix the following:<br>
             <ul style="margin:8px 0 0 18px;">
                 <?php foreach ($errors as $e): ?>
                     <li><?= htmlspecialchars($e) ?></li>
@@ -112,13 +113,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="full_name">Full Name <span style="color:red">*</span></label>
                     <input type="text" id="full_name" name="full_name"
                         value="<?= htmlspecialchars($full_name ?? '') ?>"
-                        placeholder="e.g. Ram Bahadur Thapa" required>
+                         required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address <span style="color:red">*</span></label>
                     <input type="email" id="email" name="email"
                         value="<?= htmlspecialchars($email ?? '') ?>"
-                        placeholder="e.g. ram@example.com" required>
+                         required>
                 </div>
             </div>
 
@@ -127,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="phone">Phone Number</label>
                     <input type="tel" id="phone" name="phone"
                         value="<?= htmlspecialchars($phone ?? '') ?>"
-                        placeholder="e.g. 98XXXXXXXX">
+                      >
                 </div>
                 <div class="form-group">
                     <label for="profile_image">Profile Photo</label>
@@ -142,33 +143,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-group">
                 <label for="address">Address</label>
-                <textarea id="address" name="address"
-                    placeholder="Street, City, District..."><?= htmlspecialchars($address ?? '') ?></textarea>
+                <textarea id="address" name="address"><?= htmlspecialchars($address ?? '') ?></textarea>
             </div>
 
             <div style="display:flex;gap:10px;margin-top:8px;">
-                <button type="submit" class="btn btn-primary">💾 Save User</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save User</button>
                 <a href="view_users.php" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
     </div>
 </div>
 
-<script>
-// Live image preview
-document.getElementById('profile_image').addEventListener('change', function () {
-    const file  = this.files[0];
-    const wrap  = document.getElementById('preview-wrap');
-    const img   = document.getElementById('img-preview');
-
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = e => { img.src = e.target.result; wrap.style.display = 'block'; };
-        reader.readAsDataURL(file);
-    } else {
-        wrap.style.display = 'none';
-    }
-});
-</script>
 </body>
 </html>

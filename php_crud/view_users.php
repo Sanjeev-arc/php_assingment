@@ -27,31 +27,25 @@ $total  = mysqli_num_rows($result);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Users</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 <?php include 'navbar.php'; ?>
 
 <div class="main-content">
     <div class="page-header">
-        <h1>👥 All Users <span class="badge badge-primary"><?= $total ?></span></h1>
-        <a href="add_user.php" class="btn btn-primary btn-sm">➕ Add User</a>
+        <h1> All Users <span class="badge badge-primary"></span></h1>
+        <a href="add_user.php" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add User</a>
     </div>
 
     <?php if ($success === 'deleted'): ?>
-        <div class="alert alert-success">✅ User deleted successfully.</div>
+        <div class="alert alert-success"><i class="fas fa-check-circle"></i> User deleted successfully.</div>
     <?php elseif ($success === 'updated'): ?>
-        <div class="alert alert-success">✅ User updated successfully.</div>
+        <div class="alert alert-success"><i class="fas fa-check-circle"></i> User updated successfully.</div>
     <?php endif; ?>
 
     <!-- Search -->
-    <form method="GET" action="view_users.php" class="search-bar">
-        <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
-            placeholder="🔍 Search by name, email or phone...">
-        <button type="submit" class="btn btn-primary">Search</button>
-        <?php if ($search): ?>
-            <a href="view_users.php" class="btn btn-secondary">Clear</a>
-        <?php endif; ?>
-    </form>
+   
 
     <div class="card" style="padding:0;overflow:hidden;">
         <?php if ($total > 0): ?>
@@ -91,11 +85,11 @@ $total  = mysqli_num_rows($result);
                         <td>
                             <div class="actions">
                                 <a href="edit_user.php?id=<?= $u['user_id'] ?>"
-                                   class="btn btn-warning btn-sm">✏️ Edit</a>
+                                   class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
                                 <a href="delete_user.php?id=<?= $u['user_id'] ?>"
                                    class="btn btn-danger btn-sm"
                                    onclick="return confirmDelete('<?= htmlspecialchars(addslashes($u['full_name'])) ?>')">
-                                   🗑️ Delete
+                                   <i class="fas fa-trash"></i> Delete
                                 </a>
                             </div>
                         </td>
@@ -106,7 +100,7 @@ $total  = mysqli_num_rows($result);
         </div>
         <?php else: ?>
             <div class="empty-state">
-                <div class="icon"><?= $search ? '🔍' : '📭' ?></div>
+                <div class="icon"><?= $search ? '<i class="fas fa-search"></i>' : '<i class="fas fa-inbox"></i>' ?></div>
                 <p>
                     <?php if ($search): ?>
                         No users found matching "<strong><?= htmlspecialchars($search) ?></strong>".
@@ -122,7 +116,7 @@ $total  = mysqli_num_rows($result);
 
 <script>
 function confirmDelete(name) {
-    return confirm('⚠️ Are you sure you want to delete "' + name + '"?\n\nThis action cannot be undone.');
+    return confirm('<i class="fas fa-exclamation-triangle"></i> Are you sure you want to delete "' + name + '"?\n\nThis action cannot be undone.');
 }
 </script>
 </body>
